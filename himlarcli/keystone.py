@@ -9,6 +9,7 @@ import keystoneauth1.exceptions as exceptions
 import random
 import string
 import re
+from datetime import datetime
 from enum import Enum
 
 # pylint: disable=R0904
@@ -844,6 +845,7 @@ class Keystone(Client):
         project = self.create_project(project_name=project_name,
                                       admin=email.lower(),
                                       type='demo',
+                                      createdate=datetime.today().isoformat(),
                                       description=desc)
 
     def set_identity_provider(self, name, remote_id, description):
